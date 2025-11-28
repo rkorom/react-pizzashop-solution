@@ -4,12 +4,12 @@ services:
     image: ghcr.io/rkorom/sampleapis:latest
     restart: "always"
     ports:
-      - "3000:3000"
+      - "3000:3000" # vizsga
       - "8000:8000"
-      - "8001:8001"
-      - "8002:8002"
-      - "8003:8003"
-      - "8004:8004"
+      - "8001:8001" # pizza
+      - "8002:8002" # autoker
+      - "8003:8003" # secleak-backend
+      - "8004:8004" # secleak-frontend
       - "8005:8005"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
@@ -21,5 +21,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       WATCHTOWER_CLEANUP: "true"
-      WATCHTOWER_POLL_INTERVAL: "300" # seconds
+      WATCHTOWER_POLL_INTERVAL: "300"
     command: --label-enable
