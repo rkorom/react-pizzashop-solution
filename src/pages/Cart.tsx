@@ -20,7 +20,7 @@ const Cart = () => {
     JSON.parse(localStorage.getItem("kosar") ?? "[]")
   );
 
-  // ha a kosár változik, akkor elmentjük a localStorage-ba
+  // ha a kosár változik (új elem, törlés, kiürítés), akkor elmentjük a localStorage-ba
   useEffect(() => {
     localStorage.setItem("kosar", JSON.stringify(kosar));
   }, [kosar]);
