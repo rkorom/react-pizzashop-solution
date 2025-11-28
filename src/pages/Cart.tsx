@@ -57,6 +57,9 @@ const Cart = () => {
           })}
         </tbody>
       </Table>
+      <Button onClick={() => setKosar([])} variant="warning">
+        Kiürítés
+      </Button>
     </>
   );
 };
