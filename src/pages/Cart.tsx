@@ -33,33 +33,42 @@ const Cart = () => {
   return (
     <>
       <h1>Kosár tartalma</h1>
-      <Table striped bordered hover>
-        <thead>
-          <th>Név</th>
-          <th>Ár</th>
-          <th>Törlés</th>
-        </thead>
-        <tbody>
-          {kosar.map((id, index) => {
-            const pizza = pizzak.find((p) => p.id == id);
+      {kosar.length > 0 ? (
+        <>
+          <Table striped bordered hover>
+            <thead>
+              <th>Név</th>
+              <th>Ár</th>
+              <th>Törlés</th>
+            </thead>
+            <tbody>
+              {kosar.map((id, index) => {
+                const pizza = pizzak.find((p) => p.id == id);
 
-            return (
-              <tr>
-                <td>{pizza?.nev}</td>
-                <td>{pizza?.ar} Ft</td>
-                <td>
-                  <Button onClick={() => removeItem(index)} variant="danger">
-                    <FaTrash />
-                  </Button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-      <Button onClick={() => setKosar([])} variant="warning">
-        Kiürítés
-      </Button>
+                return (
+                  <tr>
+                    <td>{pizza?.nev}</td>
+                    <td>{pizza?.ar} Ft</td>
+                    <td>
+                      <Button
+                        onClick={() => removeItem(index)}
+                        variant="danger"
+                      >
+                        <FaTrash />
+                      </Button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+          <Button onClick={() => setKosar([])} variant="warning">
+            Kiürítés
+          </Button>
+        </>
+      ) : (
+        <h2>A kosár tartalma üres</h2>
+      )}
     </>
   );
 };
